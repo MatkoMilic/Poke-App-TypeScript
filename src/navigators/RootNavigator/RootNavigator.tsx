@@ -1,5 +1,4 @@
 import React, {FC, useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import Onboarding from '../OnboardingNavigator/OnboardingNavigator';
 import MainNavigator from '../MainNavigator/MainNavigator';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -17,8 +16,6 @@ const RootNavigator: FC = () => {
         component={Onboarding}
       />
       <RootStack.Screen name="MainStackNavigator" component={MainNavigator} />
-
-      {/* if user is logged in MainNavigatorStack will start logic will be here */}
     </RootStack.Navigator>
   );
 };

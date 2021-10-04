@@ -5,7 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const OnboardingStack = createNativeStackNavigator();
 
-const Onboarding: FC = () => {
+const OnboardingNavigator: FC = () => {
   return (
     <OnboardingStack.Navigator>
       <OnboardingStack.Screen name="LoadingScreen" component={LoadingScreen} />
@@ -14,4 +14,4 @@ const Onboarding: FC = () => {
   );
 };
 
-export default Onboarding;
+export default OnboardingNavigator;
