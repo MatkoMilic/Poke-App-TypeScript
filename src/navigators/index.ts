@@ -1,3 +1,3 @@
 export {MainNavigator} from './MainNavigator';
-export {OnBoardingNavigator} from './OnBoardingNavigator';
+export {OnboardingNavigator} from './OnboardingNavigator';
 export {RootNavigator} from './RootNavigator';

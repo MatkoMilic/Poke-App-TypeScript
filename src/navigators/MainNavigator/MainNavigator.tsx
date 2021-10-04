@@ -4,15 +4,24 @@ import {SettingsScreen} from '../../screens';
 import {PokeListScreen} from '../../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
+const MainNavigatorStack = createNativeStackNavigator();
 
 const MainNavigator: FC = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
-      <Stack.Screen name="PokeListScreen" component={PokeListScreen} />
-    </Stack.Navigator>
+    <MainNavigatorStack.Navigator>
+      <MainNavigatorStack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+      />
+      <MainNavigatorStack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+      />
+      <MainNavigatorStack.Screen
+        name="PokeListScreen"
+        component={PokeListScreen}
+      />
+    </MainNavigatorStack.Navigator>
   );
 };
 

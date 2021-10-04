@@ -3,15 +3,15 @@ import {LoadingScreen} from '../../screens';
 import {LoginScreen} from '../../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
+const OnboardingStack = createNativeStackNavigator();
 
-const OnBoarding: FC = () => {
+const Onboarding: FC = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
-    </Stack.Navigator>
+    <OnboardingStack.Navigator>
+      <OnboardingStack.Screen name="LoadingScreen" component={LoadingScreen} />
+      <OnboardingStack.Screen name="LoginScreen" component={LoginScreen} />
+    </OnboardingStack.Navigator>
   );
 };
 
-export default OnBoarding;
+export default Onboarding;

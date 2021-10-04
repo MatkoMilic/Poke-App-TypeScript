@@ -1,1 +1,1 @@
-export {default as OnBoardingNavigator} from './OnBoardingNavigator';
+export {default as OnboardingNavigator} from './OnboardingNavigator';
