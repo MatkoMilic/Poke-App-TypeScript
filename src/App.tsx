@@ -45,7 +45,7 @@ const Section: React.FC<{
   );
 };
 
-const App = () => {
+const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
