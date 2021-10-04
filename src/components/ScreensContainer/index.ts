@@ -1,1 +1,1 @@
-export {default as ScreensContainer} from './styles';
+export {default as ScreensContainer} from './ScreensContainer';
