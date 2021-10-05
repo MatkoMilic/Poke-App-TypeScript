@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoadingScreen, LoginScreen} from '../../screens';
-import screenNames from '../../constants';
+import {screenNames} from '../../constants';
 
 const OnboardingStack = createNativeStackNavigator();
 
@@ -9,11 +9,11 @@ const OnboardingNavigator: FC = () => {
   return (
     <OnboardingStack.Navigator>
       <OnboardingStack.Screen
-        name={screenNames.screenNamesOnboardingNavigator.LoadingScreen}
+        name={screenNames.LOADING_SCREEN}
         component={LoadingScreen}
       />
       <OnboardingStack.Screen
-        name={screenNames.screenNamesOnboardingNavigator.LoginScreen}
+        name={screenNames.LOGIN_SCREEN}
         component={LoginScreen}
       />
     </OnboardingStack.Navigator>

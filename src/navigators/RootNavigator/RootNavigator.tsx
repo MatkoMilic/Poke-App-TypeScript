@@ -2,6 +2,7 @@ import React, {FC, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {OnboardingNavigator} from '../OnboardingNavigator';
 import {MainNavigator} from '../MainNavigator';
+import {navigatorNames} from '../../constants';
 
 const RootStack = createNativeStackNavigator();
 
@@ -12,10 +13,13 @@ const RootNavigator: FC = () => {
   return (
     <RootStack.Navigator initialRouteName="OnboardingNavigator">
       <RootStack.Screen
-        name="OnboardingNavigator"
+        name={navigatorNames.ONBOARDING_NAVIGATOR}
         component={OnboardingNavigator}
       />
-      <RootStack.Screen name="MainStackNavigator" component={MainNavigator} />
+      <RootStack.Screen
+        name={navigatorNames.MAIN_NAVIGATOR}
+        component={MainNavigator}
+      />
     </RootStack.Navigator>
   );
 };

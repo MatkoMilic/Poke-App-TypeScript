@@ -1,5 +1,3 @@
-import {
-  screenNamesMainNavigator,
-  screenNamesOnboardingNavigator,
-} from './screenNames';
-export default {screenNamesMainNavigator, screenNamesOnboardingNavigator};
+import {screenNames} from './screenNames';
+import {navigatorNames} from './navigatorNames';
+export {screenNames, navigatorNames};
