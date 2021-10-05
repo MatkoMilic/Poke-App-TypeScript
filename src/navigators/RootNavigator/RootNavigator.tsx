@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
-import Onboarding from '../OnboardingNavigator/OnboardingNavigator';
-import MainNavigator from '../MainNavigator/MainNavigator';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {OnboardingNavigator} from '../OnboardingNavigator';
+import {MainNavigator} from '../MainNavigator';
 
 const RootStack = createNativeStackNavigator();
 
@@ -10,10 +10,10 @@ const RootNavigator: FC = () => {
   const isUserLoggedIn = () => {};
 
   return (
-    <RootStack.Navigator initialRouteName="OnboardingStackNavigator">
+    <RootStack.Navigator initialRouteName="OnboardingNavigator">
       <RootStack.Screen
-        name="OnboardingStackNavigator"
-        component={Onboarding}
+        name="OnboardingNavigator"
+        component={OnboardingNavigator}
       />
       <RootStack.Screen name="MainStackNavigator" component={MainNavigator} />
     </RootStack.Navigator>
