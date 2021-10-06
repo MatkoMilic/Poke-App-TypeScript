@@ -8,19 +8,19 @@ interface ScreensContainerProps {
   style?: ViewStyle;
 }
 
+//const co = `${styles.button} ${className} ${bold ? styles.buttonBold : ''} ${primary ? styles.buttonPrimary : ''} ${secondary ? styles.buttonSecondary : ''} ${accent ? styles.buttonAccent : ''}`;
+
 export const ScreensContainer: React.FC<ScreensContainerProps> = ({
   children,
   style,
 }): JSX.Element => {
   const {theme} = React.useContext(ThemeContext);
-  const stringBasedObjectKeyForContainer = `container${theme}`;
+  const containerTheme = `${
+    theme == 'light' ? styles.containerlight : styles.containerdark
+  }`;
   return (
     <View
-      style={[
-        styles.container,
-        styles[stringBasedObjectKeyForContainer as keyof Style],
-        style,
-      ]}>
+      style={[styles.container, styles[containerTheme as keyof Style], style]}>
       {children}
     </View>
   );
