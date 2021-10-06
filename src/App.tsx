@@ -5,11 +5,11 @@ import {ThemeProvider} from './components';
 
 const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <ThemeProvider>
+    <ThemeProvider>
+      <NavigationContainer>
         <RootNavigator />
-      </ThemeProvider>
-    </NavigationContainer>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 };
 

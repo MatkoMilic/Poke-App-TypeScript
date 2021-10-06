@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const ThemeProvider: FC<Props> = ({children}) => {
-  const [theme, setTheme] = React.useState<string>('light');
+  const [theme, setTheme] = React.useState<string>('');
 
   const getUserTheme = async () => {
     const colorScheme = Appearance.getColorScheme();
