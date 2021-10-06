@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {ScreensContainer} from '../../components/ScreensContainer';
 import {ThemeContext} from '../../components/ThemeContext';
-import {Appearance} from 'react-native';
 
 const Loading: React.FC = () => {
   const {theme} = React.useContext(ThemeContext);

@@ -1,5 +1,4 @@
-import React, {FC} from 'react';
-import {useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Appearance} from 'react-native';
 import {ThemeContext} from '../ThemeContext';
 
@@ -36,4 +35,8 @@ export const ThemeProvider: FC<Props> = ({children}) => {
       {children}
     </ThemeContext.Provider>
   );
+};
+
+ThemeProvider.defaultProps = {
+  children: undefined,
 };

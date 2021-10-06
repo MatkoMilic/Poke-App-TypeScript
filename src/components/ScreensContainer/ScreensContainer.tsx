@@ -4,7 +4,7 @@ import {ThemeContext} from '../ThemeContext';
 import {styles, Style} from './styles';
 
 interface ScreensContainerProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style?: ViewStyle;
 }
 
@@ -24,4 +24,9 @@ export const ScreensContainer: React.FC<ScreensContainerProps> = ({
       {children}
     </View>
   );
+};
+
+ScreensContainer.defaultProps = {
+  children: undefined,
+  style: undefined,
 };
