@@ -1,13 +1,27 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import styles from './styles';
+import {View, ViewStyle} from 'react-native';
+import {ThemeContext} from '../ThemeContext';
+import {styles, Style} from './styles';
 
-const ScreensContainer: React.FC = () => {
+interface Props {
+  children: React.ReactNode;
+  style?: ViewStyle;
+}
+
+export const ScreensContainer: React.FC<Props> = ({
+  children,
+  style,
+}): JSX.Element => {
+  const {theme} = React.useContext(ThemeContext);
+  const stringBasedObjectKeyForContainer = `container${theme}`;
   return (
-    <View style={styles.container}>
-      <Text>ScreensContainer component</Text>
+    <View
+      style={[
+        styles.container,
+        styles[stringBasedObjectKeyForContainer as keyof Style],
+        style,
+      ]}>
+      {children}
     </View>
   );
 };
-
-export default ScreensContainer;

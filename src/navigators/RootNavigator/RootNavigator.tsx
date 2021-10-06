@@ -11,7 +11,7 @@ const RootNavigator: FC = () => {
   const isUserLoggedIn = () => {};
 
   return (
-    <RootStack.Navigator initialRouteName="OnboardingNavigator">
+    <RootStack.Navigator initialRouteName={navigatorNames.ONBOARDING_NAVIGATOR}>
       <RootStack.Screen
         name={navigatorNames.ONBOARDING_NAVIGATOR}
         component={OnboardingNavigator}

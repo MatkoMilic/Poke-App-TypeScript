@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
+import {ScreensContainer} from '../../components/ScreensContainer';
+import {ThemeContext} from '../../components/ThemeContext';
+import {Appearance} from 'react-native';
 
 const Loading: React.FC = () => {
+  const {theme} = React.useContext(ThemeContext);
+
+  useEffect(() => {}, []);
+
   return (
-    <View>
-      <Text>Loading Screen</Text>
-    </View>
+    <ScreensContainer>
+      <View>
+        <Text>Loading Screen</Text>
+        <Text>Testing of theme: {theme}</Text>
+      </View>
+    </ScreensContainer>
   );
 };
 
