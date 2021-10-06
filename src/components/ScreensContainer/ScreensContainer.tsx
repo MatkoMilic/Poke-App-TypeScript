@@ -3,12 +3,12 @@ import {View, ViewStyle} from 'react-native';
 import {ThemeContext} from '../ThemeContext';
 import {styles, Style} from './styles';
 
-interface Props {
+interface ScreensContainerProps {
   children: React.ReactNode;
   style?: ViewStyle;
 }
 
-export const ScreensContainer: React.FC<Props> = ({
+export const ScreensContainer: React.FC<ScreensContainerProps> = ({
   children,
   style,
 }): JSX.Element => {
