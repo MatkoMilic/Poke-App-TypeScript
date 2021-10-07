@@ -1,1 +1,1 @@
-export {ScreensContainer} from './ScreensContainer';
+export {default as ScreensContainer} from './ScreensContainer';

@@ -8,9 +8,7 @@ interface ScreensContainerProps {
   style?: ViewStyle;
 }
 
-//const co = `${styles.button} ${className} ${bold ? styles.buttonBold : ''} ${primary ? styles.buttonPrimary : ''} ${secondary ? styles.buttonSecondary : ''} ${accent ? styles.buttonAccent : ''}`;
-
-export const ScreensContainer: React.FC<ScreensContainerProps> = ({
+const ScreensContainer: React.FC<ScreensContainerProps> = ({
   children,
   style,
 }): JSX.Element => {
@@ -18,6 +16,7 @@ export const ScreensContainer: React.FC<ScreensContainerProps> = ({
   const containerTheme = `${
     theme == 'light' ? styles.containerlight : styles.containerdark
   }`;
+  //Opened to suggestions on how to use the most efficient solution here
   return (
     <View
       style={[styles.container, styles[containerTheme as keyof Style], style]}>
@@ -30,3 +29,5 @@ ScreensContainer.defaultProps = {
   children: undefined,
   style: undefined,
 };
+
+export default ScreensContainer;

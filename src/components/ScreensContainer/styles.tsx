@@ -12,7 +12,7 @@ export const styles = StyleSheet.create<Style>({
     flex: 1,
   },
   containerlight: {
-    backgroundColor: 'red',
+    backgroundColor: 'white',
   },
   containerdark: {
     backgroundColor: 'black',
