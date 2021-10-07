@@ -3,12 +3,12 @@ import {Theme} from '../../constants';
 
 interface IThemeDefinition {
   theme: Theme;
-  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
 }
 
 const defaultThemeValue = {
   theme: Theme.light,
-  toggleTheme: () => {},
+  setTheme: (theme: Theme) => {},
 };
 
 const ThemeContext = React.createContext<IThemeDefinition>(defaultThemeValue);

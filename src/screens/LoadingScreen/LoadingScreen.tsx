@@ -6,25 +6,19 @@ import {Theme} from '../../constants';
 import styles from './styles';
 
 const Loading: React.FC = () => {
-  const {toggleTheme} = React.useContext(ThemeContext);
-  const {theme} = React.useContext(ThemeContext);
-  //const [theme, setTheme] = React.useState<Theme>(Theme.light);
+  const {setTheme, theme} = React.useContext(ThemeContext);
 
-  const getUserTheme = () => {
+  const initTheme = () => {
     const colorScheme = Appearance.getColorScheme();
-
-    if (
-      (colorScheme === 'dark' && theme == Theme.dark) ||
-      (colorScheme === 'light' && theme == Theme.light)
-    ) {
-      return;
+    if (colorScheme === 'dark') {
+      setTheme(Theme.dark);
     } else {
-      toggleTheme();
+      setTheme(Theme.light);
     }
   };
 
   useEffect(() => {
-    getUserTheme();
+    initTheme();
   }, []);
 
   return (

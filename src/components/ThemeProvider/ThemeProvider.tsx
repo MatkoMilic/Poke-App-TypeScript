@@ -9,16 +9,8 @@ interface ThemeProviderProps {
 export const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
   const [theme, setTheme] = React.useState<Theme>(Theme.light);
 
-  const toggleTheme = () => {
-    if (theme === Theme.light) {
-      setTheme(Theme.dark);
-    } else {
-      setTheme(Theme.light);
-    }
-  };
-
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <ThemeContext.Provider value={{theme, setTheme}}>
       {children}
     </ThemeContext.Provider>
   );
