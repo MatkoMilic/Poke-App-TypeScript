@@ -9,7 +9,7 @@ interface ScreensContainerProps {
   style?: ViewStyle;
 }
 
-const ScreensContainer: React.FC<ScreensContainerProps> = ({
+const ScreenContainer: React.FC<ScreensContainerProps> = ({
   children,
   style,
 }): JSX.Element => {
@@ -24,9 +24,9 @@ const ScreensContainer: React.FC<ScreensContainerProps> = ({
   );
 };
 
-ScreensContainer.defaultProps = {
+ScreenContainer.defaultProps = {
   children: undefined,
   style: undefined,
 };
 
-export default ScreensContainer;
+export default ScreenContainer;
