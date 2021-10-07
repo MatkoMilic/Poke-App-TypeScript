@@ -1,5 +1,4 @@
-import React, {FC, useEffect} from 'react';
-import {Appearance} from 'react-native';
+import React, {FC} from 'react';
 import {ThemeContext} from '../ThemeContext';
 import {Theme} from '../../constants';
 
@@ -9,19 +8,6 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
   const [theme, setTheme] = React.useState<Theme>(Theme.light);
-
-  const getUserTheme = async () => {
-    const colorScheme = Appearance.getColorScheme();
-    if (colorScheme === 'dark') {
-      setTheme(Theme.dark);
-    } else {
-      setTheme(Theme.light);
-    }
-  };
-
-  useEffect(() => {
-    getUserTheme();
-  }, []);
 
   const toggleTheme = () => {
     if (theme === Theme.light) {
