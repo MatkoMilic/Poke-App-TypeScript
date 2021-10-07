@@ -4,12 +4,12 @@ import {ThemeContext} from '../ThemeContext';
 import {styles} from './styles';
 import {Theme} from '../../constants';
 
-interface ScreensContainerProps {
+interface ScreenContainerProps {
   children?: React.ReactNode;
   style?: ViewStyle;
 }
 
-const ScreenContainer: React.FC<ScreensContainerProps> = ({
+const ScreenContainer: React.FC<ScreenContainerProps> = ({
   children,
   style,
 }): JSX.Element => {
