@@ -1,5 +1,4 @@
-import React from 'react';
-import {StyleSheet, ViewStyle, Text} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
 
 export interface Style {
   container: ViewStyle;
@@ -15,6 +14,6 @@ export const styles = StyleSheet.create<Style>({
     backgroundColor: 'white',
   },
   containerdark: {
-    backgroundColor: 'black',
+    backgroundColor: 'red',
   },
 });
