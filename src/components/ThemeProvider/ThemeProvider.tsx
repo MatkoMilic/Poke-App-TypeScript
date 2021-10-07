@@ -3,11 +3,11 @@ import {Appearance} from 'react-native';
 import {ThemeContext} from '../ThemeContext';
 import {Theme} from '../../constants';
 
-interface Props {
+interface ThemeProviderProps {
   children?: React.ReactNode;
 }
 
-export const ThemeProvider: FC<Props> = ({children}) => {
+export const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
   const [theme, setTheme] = React.useState<Theme>(Theme.light);
 
   const getUserTheme = async () => {

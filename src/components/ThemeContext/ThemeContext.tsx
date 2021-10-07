@@ -11,5 +11,6 @@ const defaultThemeValue = {
   toggleTheme: () => {},
 };
 
-export const ThemeContext =
-  React.createContext<IThemeDefinition>(defaultThemeValue);
+const ThemeContext = React.createContext<IThemeDefinition>(defaultThemeValue);
+
+export default ThemeContext;
