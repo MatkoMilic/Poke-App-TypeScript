@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {ScreensContainer} from '../../components/ScreensContainer';
 import {ThemeContext} from '../../components/ThemeContext';
+import {Theme} from '../../constants';
+import styles from './styles';
 
 const Loading: React.FC = () => {
   const {theme} = React.useContext(ThemeContext);
@@ -11,8 +13,10 @@ const Loading: React.FC = () => {
   return (
     <ScreensContainer>
       <View>
-        <Text>Loading Screen</Text>
-        <Text>Testing of theme: {theme}</Text>
+        <Text style={styles.mainText}>Loading Screen</Text>
+        <Text style={styles.mainText}>
+          Testing of enum theme: {Object.values(Theme)[theme]}
+        </Text>
       </View>
     </ScreensContainer>
   );

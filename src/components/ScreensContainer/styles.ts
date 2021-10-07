@@ -1,12 +1,6 @@
-import {StyleSheet, ViewStyle} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-export interface Style {
-  container: ViewStyle;
-  containerlight: ViewStyle;
-  containerdark: ViewStyle;
-}
-
-export const styles = StyleSheet.create<Style>({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -14,6 +8,6 @@ export const styles = StyleSheet.create<Style>({
     backgroundColor: 'white',
   },
   containerdark: {
-    backgroundColor: 'red',
+    backgroundColor: 'black',
   },
 });

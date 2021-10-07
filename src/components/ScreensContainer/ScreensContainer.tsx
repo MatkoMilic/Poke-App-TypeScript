@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, ViewStyle} from 'react-native';
 import {ThemeContext} from '../ThemeContext';
-import {styles, Style} from './styles';
+import {styles} from './styles';
+import {Theme} from '../../constants';
 
 interface ScreensContainerProps {
   children?: React.ReactNode;
@@ -13,13 +14,11 @@ const ScreensContainer: React.FC<ScreensContainerProps> = ({
   style,
 }): JSX.Element => {
   const {theme} = React.useContext(ThemeContext);
-  const containerTheme = `${
-    theme == 'light' ? styles.containerlight : styles.containerdark
-  }`;
-  //Opened to suggestions on how to use the most efficient solution here
+  const containerTheme =
+    theme == Theme.light ? styles.containerlight : styles.containerdark;
+
   return (
-    <View
-      style={[styles.container, styles[containerTheme as keyof Style], style]}>
+    <View style={[styles.container, containerTheme as ViewStyle, style]}>
       {children}
     </View>
   );

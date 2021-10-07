@@ -1,20 +1,21 @@
 import React, {FC, useEffect} from 'react';
 import {Appearance} from 'react-native';
 import {ThemeContext} from '../ThemeContext';
+import {Theme} from '../../constants';
 
 interface Props {
   children?: React.ReactNode;
 }
 
 export const ThemeProvider: FC<Props> = ({children}) => {
-  const [theme, setTheme] = React.useState<string>('');
+  const [theme, setTheme] = React.useState<Theme>(Theme.light);
 
   const getUserTheme = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
-      setTheme('dark');
+      setTheme(Theme.dark);
     } else {
-      setTheme('light');
+      setTheme(Theme.light);
     }
   };
 
@@ -23,10 +24,10 @@ export const ThemeProvider: FC<Props> = ({children}) => {
   }, []);
 
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
+    if (theme === Theme.light) {
+      setTheme(Theme.dark);
     } else {
-      setTheme('light');
+      setTheme(Theme.light);
     }
   };
 

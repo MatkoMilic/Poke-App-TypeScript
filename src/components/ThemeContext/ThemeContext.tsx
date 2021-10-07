@@ -1,12 +1,13 @@
 import React from 'react';
+import {Theme} from '../../constants';
 
 interface IThemeDefinition {
-  theme: string;
+  theme: Theme;
   toggleTheme: () => void;
 }
 
 const defaultThemeValue = {
-  theme: '',
+  theme: Theme.light,
   toggleTheme: () => {},
 };
 
