@@ -6,14 +6,14 @@ import {Theme} from '../../constants';
 import styles from './styles';
 
 const Loading: React.FC = () => {
-  const {setTheme, theme} = React.useContext(ThemeContext);
+  const {handleTheme} = React.useContext(ThemeContext);
+  const colorScheme = Appearance.getColorScheme();
 
   const initTheme = () => {
-    const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
-      setTheme(Theme.dark);
+      handleTheme.setTheme(Theme.dark);
     } else {
-      setTheme(Theme.light);
+      handleTheme.setTheme(Theme.light);
     }
   };
 
@@ -25,7 +25,9 @@ const Loading: React.FC = () => {
     <ScreenContainer>
       <View>
         <Text style={styles.mainText}>Loading Screen</Text>
-        <Text style={styles.mainText}>Testing of enum theme: {theme}</Text>
+        <Text style={styles.mainText}>
+          Testing of enum theme: {handleTheme.theme}, apperance: {colorScheme}
+        </Text>
       </View>
     </ScreenContainer>
   );

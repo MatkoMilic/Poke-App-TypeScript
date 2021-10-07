@@ -10,7 +10,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
   const [theme, setTheme] = React.useState<Theme>(Theme.light);
 
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
+    <ThemeContext.Provider value={{handleTheme: {theme, setTheme}}}>
       {children}
     </ThemeContext.Provider>
   );

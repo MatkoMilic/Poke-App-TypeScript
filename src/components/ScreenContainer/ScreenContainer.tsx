@@ -13,9 +13,11 @@ const ScreenContainer: React.FC<ScreenContainerProps> = ({
   children,
   style,
 }): JSX.Element => {
-  const {theme} = React.useContext(ThemeContext);
+  const {handleTheme} = React.useContext(ThemeContext);
   const containerTheme =
-    theme == Theme.light ? styles.containerlight : styles.containerdark;
+    handleTheme.theme == Theme.light
+      ? styles.containerlight
+      : styles.containerdark;
 
   return (
     <View style={[styles.container, containerTheme as ViewStyle, style]}>

@@ -2,13 +2,17 @@ import React from 'react';
 import {Theme} from '../../constants';
 
 interface IThemeDefinition {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
+  handleTheme: {
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
+  };
 }
 
 const defaultThemeValue = {
-  theme: Theme.light,
-  setTheme: (theme: Theme) => {},
+  handleTheme: {
+    theme: Theme.light,
+    setTheme: (theme: Theme) => {},
+  },
 };
 
 const ThemeContext = React.createContext<IThemeDefinition>(defaultThemeValue);
