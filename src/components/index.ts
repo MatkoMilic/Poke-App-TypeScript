@@ -1,1 +1,3 @@
-export {ScreensContainer} from './ScreensContainer';
+export {ScreenContainer} from './ScreenContainer';
+export {ThemeContext} from './ThemeContext';
+export {ThemeProvider} from './ThemeProvider';
