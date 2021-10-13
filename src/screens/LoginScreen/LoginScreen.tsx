@@ -57,7 +57,9 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
         'Warning',
         'Credentials cannot be shorter than 8 characters.',
       );
-    } else return true;
+    } else {
+      return true;
+    }
   };
 
   const onSubmit = async () => {
