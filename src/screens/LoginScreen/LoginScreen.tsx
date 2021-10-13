@@ -29,18 +29,10 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
         favoritePokemon: 'null',
         theme: 'light',
       };
-      AsyncStorage.setItem(email, JSON.stringify(userDetails))
-        .then(() => {
-          console.log('data object Async saved');
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      AsyncStorage.setItem(email, JSON.stringify(userDetails)).catch(() => {});
       AsyncStorage.setItem('activeUser', email);
       navigation.replace('MainNavigator', {screen: 'ProfileScreen'});
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const validateInput = () => {
@@ -64,7 +56,6 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
 
   const onSubmit = async () => {
     const doesUserExistAlready = await AsyncStorage.getItem(email);
-    console.log('Test', doesUserExistAlready);
     if (validateInput()) {
       if (doesUserExistAlready != null) {
         const fetchUser = await AsyncStorage.getItem(email);
