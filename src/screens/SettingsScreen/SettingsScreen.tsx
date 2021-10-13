@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {MainStackParamList, RootNavigatorParamsList} from '../../constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {MainStackParamList, RootNavigatorParamsList} from '../../constants';
 import {ScreenContainer} from '../../components';
 
 interface SettingsScreenProps {
