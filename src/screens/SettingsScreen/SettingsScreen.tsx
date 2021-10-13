@@ -2,14 +2,20 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   MainStackParamList,
   OnboardingStackParamList,
   RootNavigatorParamsList,
 } from '../../constants';
 import {ScreenContainer} from '../../components';
-import {screenNames, navigatorNames} from '../../constants';
+import {
+  screenNames,
+  navigatorNames,
+  getActiveUser,
+  getActiveUserValueDetails,
+  removeActiveUser,
+  UserValues,
+} from '../../constants';
 
 interface SettingsScreenProps {
   navigation: CompositeNavigationProp<
@@ -20,26 +26,23 @@ interface SettingsScreenProps {
 
 const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const [currentUser, setCurrentUser] = useState('');
-  const [currentUserDetails, setCurrentUserDetails] = useState({});
+  const [currentUserDetails, setCurrentUserDetails] = useState<
+    UserValues | undefined
+  >(undefined);
 
-  const getUserDetails = async () => {
-    const value = await AsyncStorage.getItem('activeUser');
-    if (value) {
-      setCurrentUser(value);
-      const getUserValueDetails = await AsyncStorage.getItem(value);
-      if (getUserValueDetails) {
-        const getUserDetailsParsed = JSON.parse(getUserValueDetails);
-        setCurrentUserDetails(getUserDetailsParsed);
-      }
-    }
+  const setUserDetails = async () => {
+    const loggedUser = await getActiveUser();
+    if (loggedUser) setCurrentUser(loggedUser);
+    const loggedUserValues = await getActiveUserValueDetails();
+    if (loggedUserValues) setCurrentUserDetails(loggedUserValues);
   };
 
   useEffect(() => {
-    getUserDetails();
+    setUserDetails();
   }, []);
 
   const logoutUser = async () => {
-    await AsyncStorage.removeItem('activeUser');
+    removeActiveUser();
     navigation.replace(
       navigatorNames.ONBOARDING_NAVIGATOR as keyof RootNavigatorParamsList,
       {screen: screenNames.LOGIN_SCREEN as keyof OnboardingStackParamList},
@@ -50,6 +53,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
     <ScreenContainer>
       <View>
         <Button title="LOG OUT" onPress={logoutUser}></Button>
+        <Text>Welcome {currentUserDetails?.email}</Text>
         <Text>Settings Screen</Text>
       </View>
     </ScreenContainer>
