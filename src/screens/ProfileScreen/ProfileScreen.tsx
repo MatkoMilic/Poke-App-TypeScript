@@ -2,7 +2,11 @@ import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {MainStackParamList, RootNavigatorParamsList} from '../../constants';
+import {
+  MainStackParamList,
+  RootNavigatorParamsList,
+  screenNames,
+} from '../../constants';
 import {ScreenContainer} from '../../components';
 
 interface ProfileProps {
@@ -19,7 +23,11 @@ const Profile: React.FC<ProfileProps> = ({navigation}) => {
         <Text>Profile Screen</Text>
         <Button
           title="Go to Settings"
-          onPress={() => navigation.navigate('SettingsScreen')}></Button>
+          onPress={() =>
+            navigation.navigate(
+              screenNames.SETTINGS_SCREEN as keyof MainStackParamList,
+            )
+          }></Button>
       </View>
     </ScreenContainer>
   );
