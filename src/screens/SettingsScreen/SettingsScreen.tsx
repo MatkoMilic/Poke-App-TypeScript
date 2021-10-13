@@ -3,8 +3,13 @@ import {View, Text, Button} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {MainStackParamList, RootNavigatorParamsList} from '../../constants';
+import {
+  MainStackParamList,
+  OnboardingStackParamList,
+  RootNavigatorParamsList,
+} from '../../constants';
 import {ScreenContainer} from '../../components';
+import {screenNames, navigatorNames} from '../../constants';
 
 interface SettingsScreenProps {
   navigation: CompositeNavigationProp<
@@ -35,7 +40,10 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
 
   const logoutUser = async () => {
     await AsyncStorage.removeItem('activeUser');
-    navigation.replace('OnboardingNavigator', {screen: 'LoginScreen'});
+    navigation.replace(
+      navigatorNames.ONBOARDING_NAVIGATOR as keyof RootNavigatorParamsList,
+      {screen: screenNames.LOGIN_SCREEN as keyof OnboardingStackParamList},
+    );
   };
 
   return (
