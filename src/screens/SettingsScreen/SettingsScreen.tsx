@@ -13,7 +13,7 @@ interface SettingsProps {
   >;
 }
 
-const Settings: React.FC<SettingsProps> = ({navigation}) => {
+const SettingsScreen: React.FC<SettingsProps> = ({navigation}) => {
   const [currentUser, setCurrentUser] = useState('');
   const [currentUserDetails, setCurrentUserDetails] = useState({});
 
@@ -49,4 +49,4 @@ const Settings: React.FC<SettingsProps> = ({navigation}) => {
   );
 };
 
-export default Settings;
+export default SettingsScreen;
