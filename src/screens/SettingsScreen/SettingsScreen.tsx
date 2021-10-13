@@ -6,14 +6,14 @@ import {MainStackParamList, RootNavigatorParamsList} from '../../constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ScreenContainer} from '../../components';
 
-interface SettingsProps {
+interface SettingsScreenProps {
   navigation: CompositeNavigationProp<
     NativeStackNavigationProp<MainStackParamList, 'SettingsScreen'>,
     NativeStackNavigationProp<RootNavigatorParamsList>
   >;
 }
 
-const SettingsScreen: React.FC<SettingsProps> = ({navigation}) => {
+const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const [currentUser, setCurrentUser] = useState('');
   const [currentUserDetails, setCurrentUserDetails] = useState({});
 
