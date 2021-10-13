@@ -43,10 +43,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
 
   const logoutUser = async () => {
     removeActiveUser();
-    navigation.replace(
-      navigatorNames.ONBOARDING_NAVIGATOR as keyof RootNavigatorParamsList,
-      {screen: screenNames.LOGIN_SCREEN as keyof OnboardingStackParamList},
-    );
+    navigation.replace(navigatorNames.ONBOARDING_NAVIGATOR, {
+      screen: screenNames.LOGIN_SCREEN,
+    });
   };
 
   return (

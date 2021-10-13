@@ -24,9 +24,7 @@ const Profile: React.FC<ProfileProps> = ({navigation}) => {
         <Button
           title="Go to Settings"
           onPress={() =>
-            navigation.navigate(
-              screenNames.SETTINGS_SCREEN as keyof MainStackParamList,
-            )
+            navigation.navigate(screenNames.SETTINGS_SCREEN)
           }></Button>
       </View>
     </ScreenContainer>

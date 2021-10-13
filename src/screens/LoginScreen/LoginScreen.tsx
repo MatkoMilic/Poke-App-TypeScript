@@ -37,7 +37,9 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
         console.log(error);
       });
       AsyncStorage.setItem('activeUser', email);
-      navigation.replace('MainNavigator', {screen: 'ProfileScreen'});
+      navigation.replace(navigatorNames.MAIN_NAVIGATOR, {
+        screen: screenNames.PROFILE_SCREEN,
+      });
     } catch (err) {}
   };
 

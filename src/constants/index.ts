@@ -10,6 +10,7 @@ import {
   OnboardingStackParamList,
   MainStackParamList,
   RootNavigatorParamsList,
+  RootNavigatorNameType,
 } from './navigatorTypes';
 import {UserValues} from './userValues';
 
@@ -27,4 +28,5 @@ export type {
   MainStackParamList,
   RootNavigatorParamsList,
   UserValues,
+  RootNavigatorNameType,
 };

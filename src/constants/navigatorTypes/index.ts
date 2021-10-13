@@ -13,3 +13,6 @@ export type RootNavigatorParamsList = {
   MainNavigator: NavigatorScreenParams<MainStackParamList>;
   OnboardingNavigator: NavigatorScreenParams<OnboardingStackParamList>;
 };
+export type RootNavigatorNameType = keyof RootNavigatorParamsList;
+export type MainStackNameType = keyof MainStackParamList;
+export type OnboardingStackNameType = keyof OnboardingStackParamList;
