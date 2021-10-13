@@ -21,12 +21,12 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
     const value = await AsyncStorage.getItem('activeUser');
     if (value) {
       setCurrentUser(value);
+      const getUserValueDetails = await AsyncStorage.getItem(value);
+      if (getUserValueDetails) {
+        const getUserDetailsParsed = JSON.parse(getUserValueDetails);
+        setCurrentUserDetails(getUserDetailsParsed);
+      }
     }
-    const getUserValueDetails =
-      value !== null ? await AsyncStorage.getItem(value) : null;
-    const getUserDetailsParsed =
-      getUserValueDetails !== null ? JSON.parse(getUserValueDetails) : null;
-    setCurrentUserDetails(getUserDetailsParsed);
   };
 
   useEffect(() => {
