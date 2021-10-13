@@ -19,10 +19,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
 
   const getUserDetails = async () => {
     const value = await AsyncStorage.getItem('activeUser');
-    //Please tell me is this the
-    //proper way of handling passing string OR null to
-    //a string state in TS, or is there a better way?:
-    value !== null ? setCurrentUser(value) : null;
+    if (value) {
+      setCurrentUser(value);
+    }
     const getUserValueDetails =
       value !== null ? await AsyncStorage.getItem(value) : null;
     const getUserDetailsParsed =
