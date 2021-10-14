@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   MainStackParamList,
-  OnboardingStackParamList,
   RootNavigatorParamsList,
+  Theme,
 } from '../../constants';
-import {ScreenContainer} from '../../components';
+import {ScreenContainer, ThemeContext} from '../../components';
 import {
   screenNames,
   navigatorNames,
@@ -29,6 +30,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const [currentUserDetails, setCurrentUserDetails] = useState<
     UserValues | undefined
   >(undefined);
+  const {setTheme, theme} = React.useContext(ThemeContext);
 
   const setUserDetails = async () => {
     const loggedUser = await getActiveUser();
@@ -48,6 +50,16 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
     });
   };
 
+  const ChangeTheme = () => {
+    const userData = currentUserDetails;
+    AsyncStorage.setItem(currentUser, JSON.stringify(userData));
+    if (theme == Theme.dark) {
+      setTheme(Theme.light);
+    } else if (theme == Theme.light) {
+      setTheme(Theme.dark);
+    }
+  };
+
   return (
     <ScreenContainer>
       <View>
@@ -55,6 +67,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
         <Text>Welcome {currentUserDetails?.email}</Text>
         <Text>Settings Screen</Text>
       </View>
+      <Button title="Change Theme" onPress={ChangeTheme} />
     </ScreenContainer>
   );
 };
