@@ -7,7 +7,7 @@ const MainStack = createNativeStackNavigator();
 
 const MainNavigator: FC = () => {
   return (
-    <MainStack.Navigator>
+    <MainStack.Navigator initialRouteName={screenNames.PROFILE_SCREEN}>
       <MainStack.Screen
         name={screenNames.PROFILE_SCREEN}
         component={ProfileScreen}

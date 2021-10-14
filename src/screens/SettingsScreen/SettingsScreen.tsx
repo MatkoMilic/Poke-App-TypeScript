@@ -1,12 +1,62 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text, Button} from 'react-native';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {
+  MainStackParamList,
+  OnboardingStackParamList,
+  RootNavigatorParamsList,
+} from '../../constants';
+import {ScreenContainer} from '../../components';
+import {
+  screenNames,
+  navigatorNames,
+  getActiveUser,
+  getActiveUserValueDetails,
+  removeActiveUser,
+  UserValues,
+} from '../../constants';
 
-const Settings: React.FC = () => {
+interface SettingsScreenProps {
+  navigation: CompositeNavigationProp<
+    NativeStackNavigationProp<MainStackParamList, 'SettingsScreen'>,
+    NativeStackNavigationProp<RootNavigatorParamsList>
+  >;
+}
+
+const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
+  const [currentUser, setCurrentUser] = useState('');
+  const [currentUserDetails, setCurrentUserDetails] = useState<
+    UserValues | undefined
+  >(undefined);
+
+  const setUserDetails = async () => {
+    const loggedUser = await getActiveUser();
+    if (loggedUser) setCurrentUser(loggedUser);
+    const loggedUserValues = await getActiveUserValueDetails();
+    if (loggedUserValues) setCurrentUserDetails(loggedUserValues);
+  };
+
+  useEffect(() => {
+    setUserDetails();
+  }, []);
+
+  const logoutUser = async () => {
+    removeActiveUser();
+    navigation.replace(navigatorNames.ONBOARDING_NAVIGATOR, {
+      screen: screenNames.LOGIN_SCREEN,
+    });
+  };
+
   return (
-    <View>
-      <Text>Settings Screen</Text>
-    </View>
+    <ScreenContainer>
+      <View>
+        <Button title="LOG OUT" onPress={logoutUser}></Button>
+        <Text>Welcome {currentUserDetails?.email}</Text>
+        <Text>Settings Screen</Text>
+      </View>
+    </ScreenContainer>
   );
 };
 
-export default Settings;
+export default SettingsScreen;

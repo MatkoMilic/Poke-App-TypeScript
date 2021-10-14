@@ -1,11 +1,33 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {
+  MainStackParamList,
+  RootNavigatorParamsList,
+  screenNames,
+} from '../../constants';
+import {ScreenContainer} from '../../components';
 
-const Profile: React.FC = () => {
+interface ProfileProps {
+  navigation: CompositeNavigationProp<
+    NativeStackNavigationProp<MainStackParamList, 'ProfileScreen'>,
+    NativeStackNavigationProp<RootNavigatorParamsList>
+  >;
+}
+
+const Profile: React.FC<ProfileProps> = ({navigation}) => {
   return (
-    <View>
-      <Text>Profile Screen</Text>
-    </View>
+    <ScreenContainer>
+      <View>
+        <Text>Profile Screen</Text>
+        <Button
+          title="Go to Settings"
+          onPress={() =>
+            navigation.navigate(screenNames.SETTINGS_SCREEN)
+          }></Button>
+      </View>
+    </ScreenContainer>
   );
 };
 
