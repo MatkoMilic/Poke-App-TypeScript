@@ -7,6 +7,7 @@ import {
   MainStackNameType,
   RootNavigatorNameType,
 } from '../../constants/navigatorTypes';
+import {styles} from './styles';
 
 interface HeaderProps {
   navigation: CompositeNavigationProp<
@@ -29,15 +30,7 @@ const Header: React.FC<HeaderProps> = ({
   const route = useRoute();
 
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        paddingTop: 10,
-        paddingBottom: 10,
-        backgroundColor: '#add8e6',
-      }}>
+    <View style={styles.headerContainer}>
       <Button
         title={leftScreenTitle}
         onPress={() => navigation.navigate(leftButtonScreenName)}></Button>
