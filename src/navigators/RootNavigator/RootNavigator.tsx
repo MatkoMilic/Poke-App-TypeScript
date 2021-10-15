@@ -8,7 +8,9 @@ const RootStack = createNativeStackNavigator();
 
 const RootNavigator: FC = () => {
   return (
-    <RootStack.Navigator initialRouteName={navigatorNames.ONBOARDING_NAVIGATOR}>
+    <RootStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName={navigatorNames.ONBOARDING_NAVIGATOR}>
       <RootStack.Screen
         name={navigatorNames.ONBOARDING_NAVIGATOR}
         component={OnboardingNavigator}

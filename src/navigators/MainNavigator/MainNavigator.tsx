@@ -1,11 +1,12 @@
-import React, {FC} from 'react';
+import React, {Children, FC} from 'react';
 import {
   createNativeStackNavigator,
+  NativeStackNavigationOptions,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import {ProfileScreen, SettingsScreen, PokeListScreen} from '../../screens';
 import {MainStackParamList, screenNames} from '../../constants';
-import {Button} from 'react-native';
+import {Alert, Button, TextInput} from 'react-native';
 
 interface MainNavigatorProps {
   navigation: NativeStackNavigationProp<MainStackParamList>;
@@ -13,40 +14,25 @@ interface MainNavigatorProps {
 
 const MainStack = createNativeStackNavigator();
 
+interface ScreenOptionsProps extends NativeStackNavigationOptions {}
+
+const ScreenOptions: React.FC<ScreenOptionsProps> = ({...otherProps}) => {
+  return <TextInput {...otherProps}></TextInput>;
+};
+
 const MainNavigator: FC<MainNavigatorProps> = ({navigation}) => {
   return (
-    <MainStack.Navigator initialRouteName={screenNames.PROFILE_SCREEN}>
+    <MainStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName={screenNames.PROFILE_SCREEN}>
       <MainStack.Screen
         name={screenNames.PROFILE_SCREEN}
-        options={{
-          title: 'Your profile',
-          headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTitleAlign: 'center',
-          headerTintColor: 'white',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-          headerRight: () => (
-            <Button
-              onPress={() => navigation.navigate(screenNames.POKELIST_SCREEN)}
-              title="List"
-              color="blue"
-            />
-          ),
-          headerLeft: () => (
-            <Button
-              onPress={() => navigation.navigate(screenNames.SETTINGS_SCREEN)}
-              title="Settings"
-              color="blue"
-            />
-          ),
-        }}
+        options={{headerShown: false}}
         component={ProfileScreen}
       />
       <MainStack.Screen
         name={screenNames.SETTINGS_SCREEN}
+        options={{headerShown: false}}
         component={SettingsScreen}
       />
       <MainStack.Screen

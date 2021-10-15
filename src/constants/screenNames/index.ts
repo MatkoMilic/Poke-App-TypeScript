@@ -1,6 +1,6 @@
 import {MainStackNameType, OnboardingStackNameType} from '../navigatorTypes';
 
-interface IScreenNames {
+export interface IScreenNames {
   PROFILE_SCREEN: MainStackNameType;
   SETTINGS_SCREEN: MainStackNameType;
   POKELIST_SCREEN: MainStackNameType;
