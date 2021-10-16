@@ -7,11 +7,10 @@ import {navigatorNames} from '../../constants';
 const RootStack = createNativeStackNavigator();
 
 const RootNavigator: FC = () => {
-  const [user, setUser] = useState<any>(null);
-  const isUserLoggedIn = () => {};
-
   return (
-    <RootStack.Navigator initialRouteName={navigatorNames.ONBOARDING_NAVIGATOR}>
+    <RootStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName={navigatorNames.ONBOARDING_NAVIGATOR}>
       <RootStack.Screen
         name={navigatorNames.ONBOARDING_NAVIGATOR}
         component={OnboardingNavigator}
