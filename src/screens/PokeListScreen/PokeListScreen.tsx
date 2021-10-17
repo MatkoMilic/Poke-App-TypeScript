@@ -15,6 +15,7 @@ import {
 } from '../../constants';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import useFetch from '../../utils/useFetch/useFetch';
+import styles from './styles';
 
 interface PokeListProps {
   name: string;
@@ -25,7 +26,7 @@ interface PokeListProps {
   >;
 }
 
-const Item = ({data}: {data: PokeListProps}) => {
+const Pokemon = ({data}: {data: PokeListProps}) => {
   return (
     <View>
       <Text>{data.name}</Text>
@@ -35,7 +36,7 @@ const Item = ({data}: {data: PokeListProps}) => {
 
 const PokeList: React.FC<PokeListProps> = ({navigation}) => {
   const renderItem: ListRenderItem<PokeListProps> = ({item}) => (
-    <Item data={item} key={item.name} />
+    <Pokemon data={item} key={item.name} />
   );
 
   const {data, isLoading} = useFetch(
@@ -43,7 +44,7 @@ const PokeList: React.FC<PokeListProps> = ({navigation}) => {
   );
 
   return (
-    <View style={{flex: 1, padding: 24}}>
+    <View style={styles.container}>
       <Button
         title="Go to profile"
         onPress={() => navigation.push(screenNames.PROFILE_SCREEN)}
