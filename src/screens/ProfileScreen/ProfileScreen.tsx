@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useRoute} from '@react-navigation/native';
 import {
   MainStackParamList,
   RootNavigatorParamsList,
@@ -18,8 +17,6 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = ({navigation}) => {
-  const route = useRoute();
-
   return (
     <ScreenContainer>
       <Header
