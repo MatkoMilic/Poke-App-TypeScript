@@ -1,24 +1,16 @@
-import React, {Children, FC} from 'react';
+import React, {FC} from 'react';
 import {
   createNativeStackNavigator,
-  NativeStackNavigationOptions,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import {ProfileScreen, SettingsScreen, PokeListScreen} from '../../screens';
 import {MainStackParamList, screenNames} from '../../constants';
-import {Alert, Button, TextInput} from 'react-native';
 
 interface MainNavigatorProps {
   navigation: NativeStackNavigationProp<MainStackParamList>;
 }
 
 const MainStack = createNativeStackNavigator();
-
-interface ScreenOptionsProps extends NativeStackNavigationOptions {}
-
-const ScreenOptions: React.FC<ScreenOptionsProps> = ({...otherProps}) => {
-  return <TextInput {...otherProps}></TextInput>;
-};
 
 const MainNavigator: FC<MainNavigatorProps> = ({navigation}) => {
   return (

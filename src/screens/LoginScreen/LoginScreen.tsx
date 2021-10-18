@@ -29,7 +29,7 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
       const userDetails: UserValues = {
         email: email,
         password: password,
-        favoritePokemon: 'null',
+        favoritePokemon: 'pikachu',
         theme: 'light',
       };
       AsyncStorage.setItem(email, JSON.stringify(userDetails)).catch(error => {

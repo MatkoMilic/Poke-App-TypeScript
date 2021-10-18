@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react';
 
-const useFetch = (url: string) => {
+const usePokemons = (url: string) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
 
-  const pokeApiFetch = async () => {
+  const fetching = async () => {
     try {
       const response = await fetch(url);
       const json = await response.json();
@@ -18,9 +18,9 @@ const useFetch = (url: string) => {
   };
 
   useEffect(() => {
-    pokeApiFetch();
-  }, [url]);
+    fetching();
+  }, [fetching]);
   return {data, error, isLoading};
 };
 
-export default useFetch;
+export default usePokemons;

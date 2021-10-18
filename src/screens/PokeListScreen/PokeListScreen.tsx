@@ -2,52 +2,44 @@ import React from 'react';
 import {
   ActivityIndicator,
   FlatList,
-  Text,
   View,
   ListRenderItem,
   Button,
 } from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
   MainStackParamList,
   RootNavigatorParamsList,
   screenNames,
+  urls,
 } from '../../constants';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import useFetch from '../../utils/useFetch/useFetch';
+import {usePokemons} from '../../utils/pokemons';
 import styles from './styles';
+import {Pokemon, ScreenContainer} from '../../components';
 
 interface PokeListProps {
-  name: string;
-  id: string;
   navigation: CompositeNavigationProp<
     NativeStackNavigationProp<MainStackParamList, 'PokeListScreen'>,
     NativeStackNavigationProp<RootNavigatorParamsList>
   >;
 }
+interface PokeListItemProps {
+  name: string;
+  id: string;
+}
 
-const Pokemon = ({data}: {data: PokeListProps}) => {
-  return (
-    <View>
-      <Text>{data.name}</Text>
-    </View>
-  );
-};
-
-const PokeList: React.FC<PokeListProps> = ({navigation}) => {
-  const renderItem: ListRenderItem<PokeListProps> = ({item}) => (
+const PokeListScreen: React.FC<PokeListProps> = ({navigation}) => {
+  const renderItem: ListRenderItem<PokeListItemProps> = ({item}) => (
     <Pokemon data={item} key={item.name} />
   );
-
-  const {data, isLoading} = useFetch(
-    'https://pokeapi.co/api/v2/pokemon/?limit=20',
-  );
+  const {data, isLoading} = usePokemons(urls.pokemonDataUrl);
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       <Button
         title="Go to profile"
-        onPress={() => navigation.push(screenNames.PROFILE_SCREEN)}
+        onPress={() => navigation.navigate(screenNames.PROFILE_SCREEN)}
       />
       {isLoading ? (
         <ActivityIndicator />
@@ -58,8 +50,8 @@ const PokeList: React.FC<PokeListProps> = ({navigation}) => {
           keyExtractor={item => item.name}
         />
       )}
-    </View>
+    </ScreenContainer>
   );
 };
 
-export default PokeList;
+export default PokeListScreen;

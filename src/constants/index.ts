@@ -1,5 +1,6 @@
 import {screenNames} from './screenNames';
 import {navigatorNames} from './navigatorNames';
+import {urls} from './urls';
 import {Theme} from './themes';
 import {
   getActiveUser,
@@ -16,6 +17,7 @@ import {UserValues} from './userValues';
 
 export {
   screenNames,
+  urls,
   navigatorNames,
   Theme,
   getActiveUser,
