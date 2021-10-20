@@ -2,7 +2,6 @@ import React from 'react';
 import {
   ActivityIndicator,
   FlatList,
-  View,
   ListRenderItem,
   Button,
 } from 'react-native';
@@ -12,31 +11,37 @@ import {
   MainStackParamList,
   RootNavigatorParamsList,
   screenNames,
-  urls,
 } from '../../constants';
-import {usePokemons} from '../../utils/pokemons';
-import styles from './styles';
-import {Pokemon, ScreenContainer} from '../../components';
+import {usePokemons} from '../../utils/usePokemons';
+import {
+  PokemonListItem,
+  ScreenContainer,
+  IPokemon,
+  Header,
+} from '../../components';
 
 interface PokeListProps {
   navigation: CompositeNavigationProp<
-    NativeStackNavigationProp<MainStackParamList, 'PokeListScreen'>,
+    NativeStackNavigationProp<MainStackParamList>,
     NativeStackNavigationProp<RootNavigatorParamsList>
   >;
 }
-interface PokeListItemProps {
-  name: string;
-  id: string;
-}
 
 const PokeListScreen: React.FC<PokeListProps> = ({navigation}) => {
-  const renderItem: ListRenderItem<PokeListItemProps> = ({item}) => (
-    <Pokemon data={item} key={item.name} />
+  const renderItem: ListRenderItem<IPokemon> = ({item}) => (
+    <PokemonListItem data={item} key={item.name} />
   );
-  const {data, isLoading} = usePokemons(urls.pokemonDataUrl);
+  const {data, isLoading} = usePokemons();
 
   return (
     <ScreenContainer>
+      <Header
+        navigation={navigation}
+        leftButtonScreenName={screenNames.PROFILE_SCREEN}
+        rightButtonScreenName={screenNames.SETTINGS_SCREEN}
+        leftScreenTitle="Profile"
+        rightScreenTitle="Settings"
+      />
       <Button
         title="Go to profile"
         onPress={() => navigation.navigate(screenNames.PROFILE_SCREEN)}
