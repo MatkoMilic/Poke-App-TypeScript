@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  ListRenderItem,
-  Button,
-} from 'react-native';
+import {ActivityIndicator, FlatList, ListRenderItem} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
@@ -41,10 +36,6 @@ const PokeListScreen: React.FC<PokeListProps> = ({navigation}) => {
         rightButtonScreenName={screenNames.SETTINGS_SCREEN}
         leftScreenTitle="Profile"
         rightScreenTitle="Settings"
-      />
-      <Button
-        title="Go to profile"
-        onPress={() => navigation.navigate(screenNames.PROFILE_SCREEN)}
       />
       {isLoading ? (
         <ActivityIndicator />
