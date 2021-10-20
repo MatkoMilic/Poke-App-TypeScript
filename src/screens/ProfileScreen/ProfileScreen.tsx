@@ -5,7 +5,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
   MainStackParamList,
   RootNavigatorParamsList,
-  screenNames,
+  SETTINGS_SCREEN,
+  POKELIST_SCREEN,
 } from '../../constants';
 import {ScreenContainer, Header} from '../../components';
 
@@ -21,8 +22,8 @@ const Profile: React.FC<ProfileProps> = ({navigation}) => {
     <ScreenContainer>
       <Header
         navigation={navigation}
-        leftButtonScreenName={screenNames.SETTINGS_SCREEN}
-        rightButtonScreenName={screenNames.POKELIST_SCREEN}
+        leftButtonScreenName={SETTINGS_SCREEN}
+        rightButtonScreenName={POKELIST_SCREEN}
         leftScreenTitle="Settings"
         rightScreenTitle="Pokemons"
       />

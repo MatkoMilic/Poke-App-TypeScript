@@ -1,1 +1,1 @@
-export {usePokemons} from './useFetch';
+export {usePokemons} from './usePokemons';

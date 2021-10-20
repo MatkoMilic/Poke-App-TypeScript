@@ -10,7 +10,7 @@ import {
   navigatorNames,
   OnboardingStackParamList,
   RootNavigatorParamsList,
-  screenNames,
+  PROFILE_SCREEN,
   UserValues,
 } from '../../constants';
 interface LoginProps {
@@ -37,7 +37,7 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
       });
       AsyncStorage.setItem('activeUser', email);
       navigation.replace(navigatorNames.MAIN_NAVIGATOR, {
-        screen: screenNames.PROFILE_SCREEN,
+        screen: PROFILE_SCREEN,
       });
     } catch (err) {
       console.log(err);
@@ -67,7 +67,7 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
     } else {
       AsyncStorage.setItem('activeUser', email);
       navigation.replace(navigatorNames.MAIN_NAVIGATOR, {
-        screen: screenNames.PROFILE_SCREEN,
+        screen: PROFILE_SCREEN,
       });
     }
   };

@@ -1,17 +1,7 @@
 import {MainStackNameType, OnboardingStackNameType} from '../navigatorTypes';
 
-export interface IScreenNames {
-  PROFILE_SCREEN: MainStackNameType;
-  SETTINGS_SCREEN: MainStackNameType;
-  POKELIST_SCREEN: MainStackNameType;
-  LOADING_SCREEN: OnboardingStackNameType;
-  LOGIN_SCREEN: OnboardingStackNameType;
-}
-
-export const screenNames: IScreenNames = {
-  PROFILE_SCREEN: 'ProfileScreen',
-  SETTINGS_SCREEN: 'SettingsScreen',
-  POKELIST_SCREEN: 'PokeListScreen',
-  LOADING_SCREEN: 'LoadingScreen',
-  LOGIN_SCREEN: 'LoginScreen',
-};
+export const PROFILE_SCREEN: MainStackNameType = 'ProfileScreen';
+export const SETTINGS_SCREEN: MainStackNameType = 'SettingsScreen';
+export const POKELIST_SCREEN: MainStackNameType = 'PokeListScreen';
+export const LOADING_SCREEN: OnboardingStackNameType = 'LoadingScreen';
+export const LOGIN_SCREEN: OnboardingStackNameType = 'LoginScreen';

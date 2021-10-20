@@ -1,10 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-
-export interface IPokemon {
-  name: string;
-  id: string;
-}
+import {IPokemon} from '../../types';
+import {styles} from './styles';
 
 interface PokemonItemProps {
   data: IPokemon;
@@ -12,8 +9,8 @@ interface PokemonItemProps {
 
 const PokemonListItem: React.FC<PokemonItemProps> = ({data}) => {
   return (
-    <View>
-      <Text>{data.name}</Text>
+    <View style={styles.container}>
+      <Text style={styles.pokemonListItem}>{data.name}</Text>
     </View>
   );
 };

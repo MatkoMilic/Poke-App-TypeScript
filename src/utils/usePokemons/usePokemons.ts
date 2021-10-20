@@ -1,9 +1,10 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {urls} from '../../constants';
+import {IPokemon} from '../../types';
 
 const usePokemons = () => {
   const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IPokemon[]>();
   const [error, setError] = useState(null);
   const mountedRef = useRef(true);
 

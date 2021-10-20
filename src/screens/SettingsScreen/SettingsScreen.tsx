@@ -10,7 +10,7 @@ import {
 } from '../../constants';
 import {ScreenContainer, ThemeContext} from '../../components';
 import {
-  screenNames,
+  LOGIN_SCREEN,
   navigatorNames,
   getActiveUser,
   getActiveUserValueDetails,
@@ -46,7 +46,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const logoutUser = async () => {
     removeActiveUser();
     navigation.replace(navigatorNames.ONBOARDING_NAVIGATOR, {
-      screen: screenNames.LOGIN_SCREEN,
+      screen: LOGIN_SCREEN,
     });
   };
 

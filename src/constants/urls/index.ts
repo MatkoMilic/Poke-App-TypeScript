@@ -1,7 +1,5 @@
-export interface IUrls {
-  pokemonDataUrl: string;
-}
+const BASE_URL = 'https://pokeapi.co/api/v2';
 
-export const urls: IUrls = {
-  pokemonDataUrl: 'https://pokeapi.co/api/v2/pokemon/?limit=20',
+export const urls = {
+  pokemonDataUrl: `${BASE_URL}/pokemon/?limit=20`,
 };

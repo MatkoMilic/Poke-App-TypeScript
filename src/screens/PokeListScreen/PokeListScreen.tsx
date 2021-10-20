@@ -5,15 +5,12 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
   MainStackParamList,
   RootNavigatorParamsList,
-  screenNames,
+  PROFILE_SCREEN,
+  SETTINGS_SCREEN,
 } from '../../constants';
 import {usePokemons} from '../../utils/usePokemons';
-import {
-  PokemonListItem,
-  ScreenContainer,
-  IPokemon,
-  Header,
-} from '../../components';
+import {PokemonListItem, ScreenContainer, Header} from '../../components';
+import {IPokemon} from '../../types';
 
 interface PokeListProps {
   navigation: CompositeNavigationProp<
@@ -24,7 +21,7 @@ interface PokeListProps {
 
 const PokeListScreen: React.FC<PokeListProps> = ({navigation}) => {
   const renderItem: ListRenderItem<IPokemon> = ({item}) => (
-    <PokemonListItem data={item} key={item.name} />
+    <PokemonListItem data={item} key={item.url} />
   );
   const {data, isLoading} = usePokemons();
 
@@ -32,8 +29,8 @@ const PokeListScreen: React.FC<PokeListProps> = ({navigation}) => {
     <ScreenContainer>
       <Header
         navigation={navigation}
-        leftButtonScreenName={screenNames.PROFILE_SCREEN}
-        rightButtonScreenName={screenNames.SETTINGS_SCREEN}
+        leftButtonScreenName={PROFILE_SCREEN}
+        rightButtonScreenName={SETTINGS_SCREEN}
         leftScreenTitle="Profile"
         rightScreenTitle="Settings"
       />

@@ -6,7 +6,8 @@ import {
   navigatorNames,
   OnboardingStackParamList,
   RootNavigatorParamsList,
-  screenNames,
+  PROFILE_SCREEN,
+  LOGIN_SCREEN,
 } from '../../constants';
 import {ThemeContext} from '../../components/ThemeContext';
 import {Theme} from '../../constants';
@@ -39,12 +40,12 @@ const Loading: React.FC<LoadingProps> = ({navigation}) => {
     if (isUserLoggedIn !== null) {
       setTimeout(() => {
         navigation.replace(navigatorNames.MAIN_NAVIGATOR, {
-          screen: screenNames.PROFILE_SCREEN,
+          screen: PROFILE_SCREEN,
         });
       }, 2500);
     } else {
       setTimeout(() => {
-        navigation.replace(screenNames.LOGIN_SCREEN);
+        navigation.replace(LOGIN_SCREEN);
       }, 2500);
     }
   };
