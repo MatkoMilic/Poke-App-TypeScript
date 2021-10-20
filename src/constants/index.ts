@@ -19,7 +19,6 @@ import {
   RootNavigatorParamsList,
   RootNavigatorNameType,
 } from './navigatorTypes';
-import {UserValues} from '../types/userValues';
 
 export {
   LOADING_SCREEN,
@@ -39,6 +38,5 @@ export type {
   OnboardingStackParamList,
   MainStackParamList,
   RootNavigatorParamsList,
-  UserValues,
   RootNavigatorNameType,
 };

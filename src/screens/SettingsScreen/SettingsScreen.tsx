@@ -15,8 +15,8 @@ import {
   getActiveUser,
   getActiveUserValueDetails,
   removeActiveUser,
-  UserValues,
 } from '../../constants';
+import {IUserValues} from '../../types';
 
 interface SettingsScreenProps {
   navigation: CompositeNavigationProp<
@@ -28,7 +28,7 @@ interface SettingsScreenProps {
 const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const [currentUser, setCurrentUser] = useState('');
   const [currentUserDetails, setCurrentUserDetails] = useState<
-    UserValues | undefined
+    IUserValues | undefined
   >(undefined);
   const {setTheme, theme} = React.useContext(ThemeContext);
 

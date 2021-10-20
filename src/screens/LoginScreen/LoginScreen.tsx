@@ -11,8 +11,9 @@ import {
   OnboardingStackParamList,
   RootNavigatorParamsList,
   PROFILE_SCREEN,
-  UserValues,
 } from '../../constants';
+import {IUserValues} from '../../types';
+
 interface LoginProps {
   navigation: CompositeNavigationProp<
     NativeStackNavigationProp<OnboardingStackParamList, 'LoginScreen'>,
@@ -26,7 +27,7 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
 
   const signUpUser = () => {
     try {
-      const userDetails: UserValues = {
+      const userDetails: IUserValues = {
         email: email,
         password: password,
         favoritePokemon: 'pikachu',
@@ -61,7 +62,7 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
 
   const logUserIn = async () => {
     const doesUserExistAlready = await AsyncStorage.getItem(email);
-    const userParsed: UserValues = JSON.parse(doesUserExistAlready || '{}');
+    const userParsed: IUserValues = JSON.parse(doesUserExistAlready || '{}');
     if (userParsed.password != password) {
       Alert.alert('Warning', 'Entered password is not correct!');
     } else {
