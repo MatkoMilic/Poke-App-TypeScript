@@ -4,28 +4,26 @@ import {IPokemon} from '../../types';
 
 interface IusePokemons {
   data: IPokemon[] | undefined;
-  error: null;
+  error: string;
   isLoading: boolean;
 }
 
 const usePokemons = (): IusePokemons => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<IPokemon[]>();
-  const [error, setError] = useState(null);
-  const mountedRef = useRef(true);
+  const [error, setError] = useState('');
 
-  const fetchingPokemons = useCallback(async () => {
+  const fetchingPokemons = async () => {
     try {
       const response = await fetch(urls.pokemonDataUrl);
       const json = await response.json();
-      if (!mountedRef.current) return null;
       setData(json.results);
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
-  }, [mountedRef]);
+  };
 
   useEffect(() => {
     fetchingPokemons();
