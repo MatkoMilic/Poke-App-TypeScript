@@ -34,7 +34,7 @@ const usePokemons = (): IusePokemons => {
     return () => {
       abortController.abort();
     };
-  }, [fetchingPokemons]);
+  }, []);
   return {data, error, isLoading};
 };
 
