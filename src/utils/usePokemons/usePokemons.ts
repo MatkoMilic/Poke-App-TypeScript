@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {urls} from '../../constants';
 import {IPokemon} from '../../types';
 
@@ -9,15 +9,19 @@ interface IusePokemons {
 }
 
 const usePokemons = (): IusePokemons => {
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [data, setData] = useState<IPokemon[]>();
   const [error, setError] = useState('');
+  const abortController = new AbortController();
 
   const fetchingPokemons = async () => {
+    setLoading(true);
     try {
-      const response = await fetch(urls.pokemonDataUrl);
+      const response = await fetch(urls.pokemonDataUrl, {
+        signal: abortController.signal,
+      });
       const json = await response.json();
-      setData(json.results);
+      setData(await json.results);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -27,7 +31,10 @@ const usePokemons = (): IusePokemons => {
 
   useEffect(() => {
     fetchingPokemons();
-  }, [fetchingPokemons]);
+    return () => {
+      abortController.abort();
+    };
+  }, []);
   return {data, error, isLoading};
 };
 
