@@ -10,13 +10,13 @@ import {
 } from '../../constants';
 import {ScreenContainer, ThemeContext} from '../../components';
 import {
-  screenNames,
+  LOGIN_SCREEN,
   navigatorNames,
   getActiveUser,
   getActiveUserValueDetails,
   removeActiveUser,
-  UserValues,
 } from '../../constants';
+import {IUserValues} from '../../types';
 
 interface SettingsScreenProps {
   navigation: CompositeNavigationProp<
@@ -28,7 +28,7 @@ interface SettingsScreenProps {
 const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const [currentUser, setCurrentUser] = useState('');
   const [currentUserDetails, setCurrentUserDetails] = useState<
-    UserValues | undefined
+    IUserValues | undefined
   >(undefined);
   const {setTheme, theme} = React.useContext(ThemeContext);
 
@@ -46,7 +46,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const logoutUser = async () => {
     removeActiveUser();
     navigation.replace(navigatorNames.ONBOARDING_NAVIGATOR, {
-      screen: screenNames.LOGIN_SCREEN,
+      screen: LOGIN_SCREEN,
     });
   };
 

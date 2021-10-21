@@ -10,9 +10,10 @@ import {
   navigatorNames,
   OnboardingStackParamList,
   RootNavigatorParamsList,
-  screenNames,
-  UserValues,
+  PROFILE_SCREEN,
 } from '../../constants';
+import {IUserValues} from '../../types';
+
 interface LoginProps {
   navigation: CompositeNavigationProp<
     NativeStackNavigationProp<OnboardingStackParamList, 'LoginScreen'>,
@@ -26,10 +27,10 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
 
   const signUpUser = () => {
     try {
-      const userDetails: UserValues = {
+      const userDetails: IUserValues = {
         email: email,
         password: password,
-        favoritePokemon: 'null',
+        favoritePokemon: 'pikachu',
         theme: 'light',
       };
       AsyncStorage.setItem(email, JSON.stringify(userDetails)).catch(error => {
@@ -37,7 +38,7 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
       });
       AsyncStorage.setItem('activeUser', email);
       navigation.replace(navigatorNames.MAIN_NAVIGATOR, {
-        screen: screenNames.PROFILE_SCREEN,
+        screen: PROFILE_SCREEN,
       });
     } catch (err) {
       console.log(err);
@@ -61,13 +62,13 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
 
   const logUserIn = async () => {
     const doesUserExistAlready = await AsyncStorage.getItem(email);
-    const userParsed: UserValues = JSON.parse(doesUserExistAlready || '{}');
+    const userParsed: IUserValues = JSON.parse(doesUserExistAlready || '{}');
     if (userParsed.password != password) {
       Alert.alert('Warning', 'Entered password is not correct!');
     } else {
       AsyncStorage.setItem('activeUser', email);
       navigation.replace(navigatorNames.MAIN_NAVIGATOR, {
-        screen: screenNames.PROFILE_SCREEN,
+        screen: PROFILE_SCREEN,
       });
     }
   };

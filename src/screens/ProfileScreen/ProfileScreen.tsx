@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useRoute} from '@react-navigation/native';
 import {
   MainStackParamList,
   RootNavigatorParamsList,
-  screenNames,
+  SETTINGS_SCREEN,
+  POKELIST_SCREEN,
 } from '../../constants';
 import {ScreenContainer, Header} from '../../components';
 
@@ -18,24 +18,17 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = ({navigation}) => {
-  const route = useRoute();
-
   return (
     <ScreenContainer>
       <Header
         navigation={navigation}
-        leftButtonScreenName={screenNames.SETTINGS_SCREEN}
-        rightButtonScreenName={screenNames.POKELIST_SCREEN}
+        leftButtonScreenName={SETTINGS_SCREEN}
+        rightButtonScreenName={POKELIST_SCREEN}
         leftScreenTitle="Settings"
         rightScreenTitle="Pokemons"
       />
       <View>
         <Text>Profile Screen</Text>
-        <Button
-          title="Go to Settings"
-          onPress={() =>
-            navigation.navigate(screenNames.SETTINGS_SCREEN)
-          }></Button>
       </View>
     </ScreenContainer>
   );
