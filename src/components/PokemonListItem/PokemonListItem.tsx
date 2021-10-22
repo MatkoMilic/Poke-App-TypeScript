@@ -9,7 +9,7 @@ interface PokemonItemProps {
 
 const PokemonListItem: React.FC<PokemonItemProps> = ({data}) => {
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={styles.pokemonListItem}>{data.name}</Text>
     </View>
   );
