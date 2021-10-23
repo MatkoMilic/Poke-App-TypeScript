@@ -4,6 +4,7 @@ import {IUserValues} from '../../types';
 import {getActiveUser, getActiveUserValueDetails} from '../../constants';
 import {usePokemonAttributes} from '../../utils';
 import {PokemonAttributesItem} from '../PokemonAttributesItem';
+import {styles} from './styles';
 
 const MyProfileCard: React.FC = () => {
   const [currentUser, setCurrentUser] = useState('');
@@ -27,13 +28,13 @@ const MyProfileCard: React.FC = () => {
   }, [data, isLoading]);
 
   useEffect(() => {}, [currentUserData]);
-  //PokemonAttributesItem doesnt use data
-  //right away but only after refreshing
+
   return (
     <View>
-      <Text>Hello {currentUser} </Text>
-      <Text>Your favorite pokemon is {currentUserData?.favoritePokemon} </Text>
-
+      <Text style={styles.welcomeText}>
+        Hello {currentUser}, your favorite pokemon currently is{' '}
+        {currentUserData?.favoritePokemon}.
+      </Text>
       {data ? <PokemonAttributesItem data={data} /> : null}
     </View>
   );
