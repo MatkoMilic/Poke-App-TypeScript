@@ -27,8 +27,8 @@ const MyProfileCard: React.FC = () => {
   }, [data, isLoading]);
 
   useEffect(() => {}, [currentUserData]);
-
-  console.log(isLoading);
+  //PokemonAttributesItem doesnt use data
+  //right away but only after refreshing
   return (
     <View>
       <Text>Hello {currentUser} </Text>

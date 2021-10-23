@@ -35,7 +35,7 @@ const usePokemonAttributes = (pokemonUrl: string): IusePokemonAttributes => {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [pokemonUrl]);
   return {data, error, isLoading};
 };
 
