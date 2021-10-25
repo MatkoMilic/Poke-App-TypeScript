@@ -3,7 +3,7 @@ import {urls} from '../../constants';
 import {IPokemonAttributes} from '../../types';
 
 interface IusePokemonAttributes {
-  data: IPokemonAttributes | undefined;
+  data?: IPokemonAttributes;
   error: string;
   isLoading: boolean;
   fetchPokemonAttributes: (pokemonUrl: string) => Promise<void>;
