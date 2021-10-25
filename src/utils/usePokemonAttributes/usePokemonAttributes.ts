@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {urls} from '../../constants';
 import {IPokemonAttributes} from '../../types';
 
@@ -6,15 +6,16 @@ interface IusePokemonAttributes {
   data: IPokemonAttributes | undefined;
   error: string;
   isLoading: boolean;
+  fetchingPokemonAttributes: (pokemonUrl: string) => Promise<void>;
 }
 
-const usePokemonAttributes = (pokemonUrl: string): IusePokemonAttributes => {
+const usePokemonAttributes = (): IusePokemonAttributes => {
   const [isLoading, setLoading] = useState(false);
   const [data, setData] = useState<IPokemonAttributes>();
   const [error, setError] = useState('');
   const abortController = new AbortController();
 
-  const fetchingPokemonAttributes = async () => {
+  const fetchingPokemonAttributes = async (pokemonUrl: string) => {
     setLoading(true);
     try {
       const response = await fetch(`${urls.baseUrl + pokemonUrl}`, {
@@ -28,15 +29,7 @@ const usePokemonAttributes = (pokemonUrl: string): IusePokemonAttributes => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchingPokemonAttributes();
-
-    return () => {
-      abortController.abort();
-    };
-  }, [pokemonUrl]);
-  return {data, error, isLoading};
+  return {data, error, isLoading, fetchingPokemonAttributes};
 };
 
 export default usePokemonAttributes;
