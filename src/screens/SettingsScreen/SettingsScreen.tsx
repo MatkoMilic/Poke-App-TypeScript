@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, TouchableOpacity} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   MainStackParamList,
+  POKELIST_SCREEN,
+  PROFILE_SCREEN,
   RootNavigatorParamsList,
   Theme,
 } from '../../constants';
-import {ScreenContainer, ThemeContext} from '../../components';
+import {Header, ScreenContainer, ThemeContext} from '../../components';
 import {
   LOGIN_SCREEN,
   navigatorNames,
@@ -17,10 +19,10 @@ import {
   removeActiveUser,
 } from '../../constants';
 import {IUserValues} from '../../types';
-
+import styles from './styles';
 interface SettingsScreenProps {
   navigation: CompositeNavigationProp<
-    NativeStackNavigationProp<MainStackParamList, 'SettingsScreen'>,
+    NativeStackNavigationProp<MainStackParamList>,
     NativeStackNavigationProp<RootNavigatorParamsList>
   >;
 }
@@ -50,6 +52,14 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
     });
   };
 
+  const deleteUser = async () => {
+    await AsyncStorage.removeItem(currentUser);
+    removeActiveUser();
+    navigation.replace(navigatorNames.ONBOARDING_NAVIGATOR, {
+      screen: LOGIN_SCREEN,
+    });
+  };
+
   const ChangeTheme = () => {
     const userData = currentUserDetails;
     AsyncStorage.setItem(currentUser, JSON.stringify(userData));
@@ -62,12 +72,28 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
 
   return (
     <ScreenContainer>
+      <Header
+        navigation={navigation}
+        leftButtonScreenName={PROFILE_SCREEN}
+        rightButtonScreenName={POKELIST_SCREEN}
+        leftScreenTitle="Profile"
+        rightScreenTitle="Pokemons"
+      />
       <View>
         <Button title="LOG OUT" onPress={logoutUser}></Button>
-        <Text>Welcome {currentUserDetails?.email}</Text>
-        <Text>Settings Screen</Text>
+        <Text
+          style={
+            theme == Theme.light
+              ? styles.welcomeTextLight
+              : styles.welcomeTextDark
+          }>
+          Welcome {currentUserDetails?.email}
+        </Text>
       </View>
       <Button title="Change Theme" onPress={ChangeTheme} />
+      <TouchableOpacity onPress={deleteUser}>
+        <Text style={styles.deleteButton}>DELETE YOUR ACCOUNT</Text>
+      </TouchableOpacity>
     </ScreenContainer>
   );
 };

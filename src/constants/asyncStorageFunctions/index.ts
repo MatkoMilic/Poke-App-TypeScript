@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {UserValues} from '..';
+import {IUserValues} from '../../types';
 
 export const getActiveUser = async () => {
   const activeUser = await AsyncStorage.getItem('activeUser');
@@ -15,7 +15,7 @@ export const getActiveUserValueDetails = async () => {
   if (activeUserEmail) {
     const getUserValueDetails = await AsyncStorage.getItem(activeUserEmail);
     if (getUserValueDetails) {
-      const getUserDetailsParsed: UserValues = JSON.parse(getUserValueDetails);
+      const getUserDetailsParsed: IUserValues = JSON.parse(getUserValueDetails);
       return getUserDetailsParsed;
     }
   }

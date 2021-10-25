@@ -9,6 +9,7 @@ import {
   POKELIST_SCREEN,
 } from '../../constants';
 import {ScreenContainer, Header} from '../../components';
+import MyProfileCard from '../../components/MyProfileCard';
 
 interface ProfileProps {
   navigation: CompositeNavigationProp<
@@ -27,9 +28,7 @@ const Profile: React.FC<ProfileProps> = ({navigation}) => {
         leftScreenTitle="Settings"
         rightScreenTitle="Pokemons"
       />
-      <View>
-        <Text>Profile Screen</Text>
-      </View>
+      <MyProfileCard />
     </ScreenContainer>
   );
 };

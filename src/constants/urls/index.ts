@@ -1,5 +1,6 @@
-const BASE_URL = 'https://pokeapi.co/api/v2';
+const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 export const urls = {
-  pokemonDataUrl: `${BASE_URL}/pokemon/?limit=20`,
+  baseUrl: BASE_URL,
+  pokemonDataUrl: `${BASE_URL}?limit=20`,
 };
