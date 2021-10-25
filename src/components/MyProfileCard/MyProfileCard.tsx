@@ -27,8 +27,6 @@ const MyProfileCard: React.FC = () => {
     setUserDetails();
   }, [data, isLoading]);
 
-  useEffect(() => {}, [currentUserData]);
-
   return (
     <View>
       <Text style={styles.welcomeText}>
