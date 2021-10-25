@@ -4,15 +4,17 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ScreenContainer} from '../../components';
+import {ScreenContainer, ThemeContext} from '../../components';
 import {InputField} from '../../components/InputField';
 import {
   navigatorNames,
   OnboardingStackParamList,
   RootNavigatorParamsList,
   PROFILE_SCREEN,
+  Theme,
 } from '../../constants';
 import {IUserValues} from '../../types';
+import styles from './styles';
 
 interface LoginProps {
   navigation: CompositeNavigationProp<
@@ -24,6 +26,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {theme} = React.useContext(ThemeContext);
 
   const signUpUser = () => {
     try {
@@ -91,14 +94,27 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
           value={email}
           onChangeText={text => setEmail(text)}
           placeholder="Email address"
+          style={
+            theme == Theme.dark ? styles.loginInputDark : styles.loginInputLight
+          }
         />
         <InputField
           value={password}
           onChangeText={text => setPassword(text)}
           secureTextEntry
           placeholder="Password"
+          style={
+            theme == Theme.dark ? styles.loginInputDark : styles.loginInputLight
+          }
         />
-        <Text>Login Screen</Text>
+        <Text
+          style={
+            theme == Theme.dark
+              ? styles.welcomeTextDark
+              : styles.welcomeTextLight
+          }>
+          Welcome to Poke App!
+        </Text>
         <Button title="Submit" onPress={onSubmit}></Button>
       </SafeAreaView>
     </ScreenContainer>

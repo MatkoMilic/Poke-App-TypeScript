@@ -12,11 +12,13 @@ const PokemonAttributesItem: React.FC<PokemonAttributesItemProps> = ({
 }) => {
   return (
     <View>
-      <Text>Some of his traits are:</Text>
-      <Text>Height: {data.height},</Text>
-      <Text>Weight: {data.weight},</Text>
-      <Text>Id in database: {data.id},</Text>
-      <Text>Base experience: {data.base_experience}.</Text>
+      <Text style={styles.pokemonAttribute}>Some of his traits are:</Text>
+      <Text style={styles.pokemonAttribute}>Height: {data.height},</Text>
+      <Text style={styles.pokemonAttribute}>Weight: {data.weight},</Text>
+      <Text style={styles.pokemonAttribute}>Id in database: {data.id},</Text>
+      <Text style={styles.pokemonAttribute}>
+        Base experience: {data.base_experience}.
+      </Text>
     </View>
   );
 };

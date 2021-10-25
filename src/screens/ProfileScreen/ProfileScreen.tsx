@@ -28,9 +28,6 @@ const Profile: React.FC<ProfileProps> = ({navigation}) => {
         leftScreenTitle="Settings"
         rightScreenTitle="Pokemons"
       />
-      <View>
-        <Text>Profile Screen</Text>
-      </View>
       <MyProfileCard />
     </ScreenContainer>
   );
