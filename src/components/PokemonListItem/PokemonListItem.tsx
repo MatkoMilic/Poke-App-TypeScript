@@ -33,7 +33,7 @@ const PokemonListItem: React.FC<PokemonItemProps> = ({
   navigation,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const {data, isLoading, fetchingPokemonAttributes} = usePokemonAttributes();
+  const {data, isLoading, fetchPokemonAttributes} = usePokemonAttributes();
 
   const getCurrentUserUpdated = async (data: IPokemonAttributes) => {
     const loggedUser = await getActiveUser();
@@ -93,7 +93,7 @@ const PokemonListItem: React.FC<PokemonItemProps> = ({
       </View>
       <TouchableOpacity
         onPress={() => {
-          fetchingPokemonAttributes(dataPokemon.name);
+          fetchPokemonAttributes(dataPokemon.name);
           setModalVisible(true);
         }}>
         <Text style={styles.pokemonListItem}>{dataPokemon.name}</Text>

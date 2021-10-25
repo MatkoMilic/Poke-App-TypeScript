@@ -6,7 +6,7 @@ interface IusePokemonAttributes {
   data: IPokemonAttributes | undefined;
   error: string;
   isLoading: boolean;
-  fetchingPokemonAttributes: (pokemonUrl: string) => Promise<void>;
+  fetchPokemonAttributes: (pokemonUrl: string) => Promise<void>;
 }
 
 const usePokemonAttributes = (): IusePokemonAttributes => {
@@ -15,7 +15,7 @@ const usePokemonAttributes = (): IusePokemonAttributes => {
   const [error, setError] = useState('');
   const abortController = new AbortController();
 
-  const fetchingPokemonAttributes = async (pokemonUrl: string) => {
+  const fetchPokemonAttributes = async (pokemonUrl: string) => {
     setLoading(true);
     try {
       const response = await fetch(`${urls.baseUrl + pokemonUrl}`, {
@@ -29,7 +29,7 @@ const usePokemonAttributes = (): IusePokemonAttributes => {
       setLoading(false);
     }
   };
-  return {data, error, isLoading, fetchingPokemonAttributes};
+  return {data, error, isLoading, fetchPokemonAttributes};
 };
 
 export default usePokemonAttributes;

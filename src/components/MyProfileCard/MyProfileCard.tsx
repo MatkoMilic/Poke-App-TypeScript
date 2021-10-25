@@ -9,7 +9,7 @@ import {styles} from './styles';
 const MyProfileCard: React.FC = () => {
   const [currentUser, setCurrentUser] = useState('');
   const [currentUserData, setCurrentUserData] = useState<IUserValues>();
-  const {data, isLoading, fetchingPokemonAttributes} = usePokemonAttributes();
+  const {data, isLoading, fetchPokemonAttributes} = usePokemonAttributes();
   const [hasLoaded, setHasLoaded] = useState<boolean>();
 
   const setUserDetails = async () => {
@@ -23,7 +23,7 @@ const MyProfileCard: React.FC = () => {
       setHasLoaded(true);
     }
     if (currentUserData)
-      fetchingPokemonAttributes(currentUserData.favoritePokemon);
+      fetchPokemonAttributes(currentUserData.favoritePokemon);
   };
 
   useEffect(() => {
