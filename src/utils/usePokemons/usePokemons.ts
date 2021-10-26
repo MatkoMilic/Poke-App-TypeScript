@@ -21,7 +21,7 @@ const usePokemons = (): IusePokemons => {
         signal: abortController.signal,
       });
       const json = await response.json();
-      setData(await json.results);
+      setData(json.results);
     } catch (error) {
       setError(error.message);
     } finally {

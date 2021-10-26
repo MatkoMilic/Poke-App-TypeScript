@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, FlatList, ListRenderItem} from 'react-native';
+import {ActivityIndicator, FlatList, ListRenderItem, View} from 'react-native';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
@@ -20,10 +20,15 @@ interface PokeListProps {
 }
 
 const PokeListScreen: React.FC<PokeListProps> = ({navigation}) => {
-  const renderItem: ListRenderItem<IPokemon> = ({item}) => (
-    <PokemonListItem data={item} key={item.url} />
-  );
   const {data, isLoading} = usePokemons();
+
+  const renderItem: ListRenderItem<IPokemon> = ({item}) => (
+    <PokemonListItem
+      dataPokemon={item}
+      key={item.url}
+      navigation={navigation}
+    />
+  );
 
   return (
     <ScreenContainer>

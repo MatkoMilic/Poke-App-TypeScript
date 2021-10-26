@@ -9,23 +9,25 @@ import {styles} from './styles';
 const MyProfileCard: React.FC = () => {
   const [currentUser, setCurrentUser] = useState('');
   const [currentUserData, setCurrentUserData] = useState<IUserValues>();
+  const {data, isLoading, fetchPokemonAttributes} = usePokemonAttributes();
+  const [hasLoaded, setHasLoaded] = useState<boolean>();
 
   const setUserDetails = async () => {
     const loggedUser = await getActiveUser();
-    if (loggedUser) setCurrentUser(loggedUser);
     const loggedUserValues = await getActiveUserValueDetails();
+    if (loggedUser) {
+      setCurrentUser(loggedUser);
+    }
     if (loggedUserValues) {
       setCurrentUserData(loggedUserValues);
+      setHasLoaded(true);
+      fetchPokemonAttributes(loggedUserValues.favoritePokemon);
     }
   };
 
-  const {data, isLoading} = usePokemonAttributes(
-    `${currentUserData?.favoritePokemon}`,
-  );
-
   useEffect(() => {
     setUserDetails();
-  }, [data, isLoading]);
+  }, []);
 
   return (
     <View>
@@ -33,7 +35,12 @@ const MyProfileCard: React.FC = () => {
         Hello {currentUser}, your favorite pokemon currently is{' '}
         {currentUserData?.favoritePokemon}.
       </Text>
-      {data ? <PokemonAttributesItem data={data} /> : null}
+
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : hasLoaded && data ? (
+        <PokemonAttributesItem data={data} />
+      ) : null}
     </View>
   );
 };
