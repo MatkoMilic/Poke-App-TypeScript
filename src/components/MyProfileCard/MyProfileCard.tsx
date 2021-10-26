@@ -21,9 +21,8 @@ const MyProfileCard: React.FC = () => {
     if (loggedUserValues) {
       setCurrentUserData(loggedUserValues);
       setHasLoaded(true);
-    }
-    if (loggedUserValues)
       fetchPokemonAttributes(loggedUserValues.favoritePokemon);
+    }
   };
 
   useEffect(() => {
