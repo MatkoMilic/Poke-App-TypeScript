@@ -22,13 +22,13 @@ const MyProfileCard: React.FC = () => {
       setCurrentUserData(loggedUserValues);
       setHasLoaded(true);
     }
-    if (currentUserData)
-      fetchPokemonAttributes(currentUserData.favoritePokemon);
+    if (loggedUserValues)
+      fetchPokemonAttributes(loggedUserValues.favoritePokemon);
   };
 
   useEffect(() => {
     setUserDetails();
-  }, [currentUserData?.favoritePokemon]);
+  }, []);
 
   return (
     <View>
