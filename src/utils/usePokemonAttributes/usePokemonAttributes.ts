@@ -22,7 +22,7 @@ const usePokemonAttributes = (): IusePokemonAttributes => {
         signal: abortController.signal,
       });
       const json = await response.json();
-      setData(await json);
+      setData(json);
     } catch (error) {
       setError(error.message);
     } finally {
